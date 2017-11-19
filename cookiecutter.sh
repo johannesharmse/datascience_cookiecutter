@@ -4,9 +4,14 @@
 
 # Creator: Johannes Harmse
 
-# Script that creates a generic data science project folder structure.
+# Date: 18 November 2018
 
-# dest_out: destination folder in string format. Use "../" to go up a level.
+function show_usage() {
+  echo "Script creates a generic data science project folder structure. By default it will create a basic project file structure, but can build up a custom structure by using the arguments.";
+  #exit 0;
+}
+
+# Assign default variable values where necessary.
 
 dest_out="Root" # default destination folder
 license_out="Templates/LICENSE/GNU_v3.md" #default license template
@@ -15,8 +20,10 @@ contributing_out="Templates/CONTRIBUTING/Default.md" #default contributing templ
 
 # get arguments if any has been entered
 
-while getopts ":d:l:p:y:o:r:f:c:s:a:e:n:m:" opt; do
+while getopts ":h:d:l:p:y:o:r:f:c:s:a:e:n:m:" opt; do
   case $opt in
+    h) show_usage; exit 0
+    ;;
     d) dest_out="$OPTARG" # Destination folder for structure
     ;;
     l) license_out="$OPTARG" # License file
@@ -43,12 +50,12 @@ while getopts ":d:l:p:y:o:r:f:c:s:a:e:n:m:" opt; do
     ;;
     m) name_out="$OPTARG" # naMe of project
     ;;
-    \?) echo "Invalid option -$OPTARG" >&13
+    \?) echo "Invalid option -$OPTARG" >&14
     ;;
   esac
 done
 
-# create destination folder if it does not exist
+# create destination folder by checking whether it exists (it should always exist since being being initiated with a string value)
 
 if [[ ! -d $dest_out ]]
 then
@@ -67,7 +74,7 @@ cp "$readme_out" "$dest_out/README.md"
 
 cp "$contributing_out" "$dest_out/CONTRIBUTING.md"
 
-# insert project info into LICENSE document
+# insert project info into LICENSE document. Will only work if substitution strings are present, such as in template document.
 
 if [[ ! -z $project_out ]]
 then
@@ -84,16 +91,14 @@ then
   sed -i "s/<OWNER>/$owner_out/g" "$dest_out/LICENSE.md"
 fi
 
-# insert project name info into README document
-
-#echo $name_out
+# insert project name info into README document. Will only work if substitution strings are present, such as in template document.
 
 if [[ ! -z $name_out ]]
 then
   sed -i "s/<Project Name>/$name_out/g" "$dest_out/README.md"
 fi
 
-# create additional folders
+# create additional folders. Check for argument path first. Create empty folders if arguments have not been used.
 
 if [[ ! -z $raw_out ]]
 then
