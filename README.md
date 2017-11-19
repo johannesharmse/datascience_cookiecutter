@@ -40,6 +40,8 @@ You can create a data science file structure by running the following shell comm
 
 `[options]` refers to the arguments you can use when creating the file structure. The arguments are listed below:
 
+`-h` (Eg. `bash cookiecutter.sh -h "all"`) Use this to get help in this script. `all` has to be specified as the argument value such as in the example. It cannot be used in combination with any of the other arguments below.
+
 `-d` (Eg. `bash cookiecutter.sh -d "Data Science Project/Project 1"`) Destination folder path. If not specified, a default `Root` folder will be created.
 
 `-l` (Eg. `bash cookiecutter.sh -l "My LICENSES/My Own License.md"`) License file path. If not specified, the default License file will be added from the Templates folder.
