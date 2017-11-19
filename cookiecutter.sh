@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# cookiecutter script - data science project
+# This project has been developed to automate the process of creating a file structure for a data science project. The script creates a generic data science project folder structure. By default it will create a basic project file structure, but can build up a custom structure by using the arguments.
 
 # Creator: Johannes Harmse
 
-# Date: 18 November 2018
+# Contributor: Johannes Harmse
+
+# Creation Date: 18 November 2017
 
 # usage of function. Access via help argument
 

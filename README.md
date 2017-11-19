@@ -1,5 +1,11 @@
 #  Data Science Cookie Cutter
 
+**Creator:** Johannes Harmse
+
+**Contributor:** Johannes Harmse
+
+**Creation Date:** 18 November 2017
+
 This project has been developed to automate the process of creating a file structure for a data science project.
 
 The bash script creates the following folders and files. These objects will either be created by default or can be specified when running the script:
